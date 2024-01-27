@@ -1,7 +1,6 @@
 import time
 import concurrent.futures
 import openai
-from .object_detection import localize_objects
 """
 接收path
 读keyword
@@ -9,8 +8,7 @@ from .object_detection import localize_objects
 返回一个问题
 """
 
-openai.api_key = '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'
-RETRY_TIMES = 1
+openai.api_key = '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'
 total_threads = 1
 
 
@@ -62,6 +60,7 @@ def extract_question_and_answer(generated_content):
 
     return result_dict
 
+
 def multi_threading(keyword):
     results = {}
 
@@ -84,12 +83,11 @@ def multi_threading(keyword):
                 results[index] = result
             except Exception as e:
                 print(f"Error getting result: {str(e)}")
-
+    
     return results[0]
 
 
-def game_bot_interaction(binary_info):
-    keyword = localize_objects(binary_info)
+def game_bot_interaction(keyword):
     if keyword is None:
         raise ValueError("Keyword is None. Handling exception.")
-    multi_threading(keyword)
+    return multi_threading(keyword)

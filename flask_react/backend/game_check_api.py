@@ -6,12 +6,11 @@ from flask_cors import CORS
 api = Flask(__name__)
 CORS(api)
 
-gamecheck_api = Blueprint('gamecheck_api', __name__)
+game_check_api = Blueprint('game_check_api', __name__)
 
 
-@gamecheck_api.route('/judgment', methods=['POST'])
-def gamecheck():
-    # {'username': 'jackson', 'answer': 'A'}
+@game_check_api.route('/game_check', methods=['POST'])
+def game_check():
     data = request.get_json()
 
     username = data['username']
@@ -20,19 +19,16 @@ def gamecheck():
     data_processor = Firebase()
     user_answer = data_processor.retrieve_answer(username)['answer']
 
-    user_score = int(data_processor.retrieve_user_score(username))
+    user_score = int(data_processor.retrieve_user_score(username)) + 3
+    college_score = int(data_processor.retrieve_user_college(username)) + 3
 
     if answer == user_answer:
-        user_score += 3
-        # 学院加分
         data_processor.insert_user_score(username, user_score)
+        data_processor.insert_college_score(username, college_score)
         return jsonify({"message": "Answer correct"}), 201
     else:
         data_processor.insert_user_score(username, user_score)
         return jsonify({"message": "Answer incorrect"}), 201
-
-
-
 
 
 if __name__ == '__main__':

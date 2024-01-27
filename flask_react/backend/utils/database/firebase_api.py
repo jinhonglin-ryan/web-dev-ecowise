@@ -196,6 +196,35 @@ class Firebase:
         """
         pass
 
+    # college
+    def insert_college_score(self, username, score):
+        """
+        :param username:
+        :param score: dict: {'college_score': score}
+        :return:
+        """
+        college_score = {'college_score': score}
+        college_name = self.retrieve_user_college(username)
+
+        college_score_ref = (self.firestore.collection('CollegeRank').
+                         document(college_name))
+
+        college_score_ref.set(college_score)
+
+    def retrieve_college_score(self, username):
+        college_name = self.retrieve_user_college(username)
+        college_score_ref = (self.firestore.collection('CollegeRank').
+                             document(college_name))
+        return college_score_ref.get().get('college_score')
+
+    def retrieve_user_college(self, username):
+
+        user_college_ref = (self.firestore.collection('User').
+                         document(username).collection('user_info').
+                         document('detail'))
+
+        return user_college_ref.get().get('collegeName')
+
 
 
 if __name__ == "__main__":

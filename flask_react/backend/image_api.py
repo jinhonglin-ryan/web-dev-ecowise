@@ -21,5 +21,11 @@ def image_upload():
     data_processor = Firebase()
     data_processor.insert_image_label(user_id, data)
 
+    user_score = int(data_processor.retrieve_college_score(user_id)) + 1
+    college_score = int(data_processor.retrieve_college_score(user_id)) + 1
+
+    data_processor.insert_user_score(user_id, user_score)
+    data_processor.insert_college_score(user_id, college_score)
+
     return jsonify({"message": "Image Uploaded successfully", 'response': ret[0]}), 201
      

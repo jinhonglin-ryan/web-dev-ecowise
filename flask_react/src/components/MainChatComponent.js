@@ -31,7 +31,7 @@ function MainChatComponent() {
   };
   const handleAnswerSelected = (answer) => {
     // Submit the selected answer to your API for validation
-    axios.post('/api/game/validate-answer', { answer })
+    axios.post('/game_check', { answer })
       .then(response => {
       })
       .catch(error => {

@@ -8,12 +8,13 @@ function GameComponent({ onChoiceSelected }) {
     const fetchGameData = async () => {
       try {
         const username = localStorage.getItem('username'); 
-        const gameInitResponse = await axios.post('/api/game/init', { signal: 'yes', username });
+        const gameInitResponse = await axios.post('/game_init', { signal: 'yes', username });
 
         // Expecting a response with 'question' and 'choices'
+        const choicesArray = gameInitResponse.data.choices.split('\n');
         setQuestionData({
           question: gameInitResponse.data.question,
-          choices: gameInitResponse.data.choices
+          choices: choicesArray
         });
       } catch (error) {
         console.error("Error initiating game", error);
