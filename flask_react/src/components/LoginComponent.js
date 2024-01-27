@@ -14,6 +14,7 @@ const LoginComponent = () => {
             // Your API call logic here
             const response = await axios.post('/login', { username, password });
             console.log(response.data);
+            localStorage.setItem('username', username);
             navigate('/main');
         } catch (error) {
             console.error("Login failed", error);

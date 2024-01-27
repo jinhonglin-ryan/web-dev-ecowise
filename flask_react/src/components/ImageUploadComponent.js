@@ -21,7 +21,10 @@ function ImageUploadComponent({ onModeChange, setTextResponse }) {
 
     const formData = new FormData();
     formData.append('image', selectedFile); // Append the file with key 'image'
-    
+    const username = localStorage.getItem('username');
+    if (username) {
+        formData.append('username', username); // Append username to form data
+    }
     try {
       const response = await axios.post('/image_upload', formData, {
         headers: {

@@ -1,48 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function GameComponent({ onAnswerSelected }) {
-  const [question, setQuestion] = useState('');
-  const [answers, setAnswers] = useState([]);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+function GameComponent({ onChoiceSelected }) {
+  const [questionData, setQuestionData] = useState({ question: '', choices: [] });
 
   useEffect(() => {
-    // Replace with your actual API endpoint
     const fetchGameData = async () => {
       try {
-        const questionResponse = await axios.get('/game/question');
-        setQuestion(questionResponse.data.question);
+        const username = localStorage.getItem('username'); 
+        const gameInitResponse = await axios.post('/api/game/init', { signal: 'yes', username });
 
-        const answersResponse = await axios.get('/game/answers');
-        setAnswers(answersResponse.data.answers);
+        // Expecting a response with 'question' and 'choices'
+        setQuestionData({
+          question: gameInitResponse.data.question,
+          choices: gameInitResponse.data.choices
+        });
       } catch (error) {
-        console.error("Error fetching game data", error);
+        console.error("Error initiating game", error);
       }
     };
 
     fetchGameData();
   }, []);
 
-  const handleAnswerClick = (answer) => {
-    setSelectedAnswer(answer);
-    onAnswerSelected(answer); // This function should handle the API call to validate the answer
-  };
-
   return (
     <div>
-      <h3>{question}</h3>
-      {answers.map((answer, index) => (
-        <button
-          key={index}
-          onClick={() => handleAnswerClick(answer)}
-          style={{
-            border: answer === selectedAnswer ? '3px solid blue' : '1px solid gray',
-            margin: '5px',
-            backgroundColor: answer === selectedAnswer ? '#D3D3D3' : 'white'
-          }}
-        >
-          {answer}
-        </button>
+      <h3>{questionData.question}</h3>
+      {questionData.choices.map((choice, index) => (
+        <div key={index}>
+          <button onClick={() => onChoiceSelected(String.fromCharCode(65 + index))}>
+            {String.fromCharCode(65 + index)}
+          </button> {choice}
+        </div>
       ))}
     </div>
   );

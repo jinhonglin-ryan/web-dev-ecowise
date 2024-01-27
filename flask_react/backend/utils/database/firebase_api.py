@@ -2,7 +2,7 @@ import os
 from typing import Any
 import pathlib
 import firebase_admin
-from firebase_admin import credentials, firestore, storage
+from firebase_admin import credentials, firestore
 
 
 class Firebase:
@@ -76,6 +76,42 @@ class Firebase:
 
         question_ref.set(question_data) # Rewrite the old one, only the latest question will be shown
 
+    def insert_answer(self, username, answer):
+        """
+        Insert an answer
+        :param username:
+        :param answer:
+        :return:
+        """
+        question_ref = (self.firestore.collection('User').
+                        document(username))
+
+        question_ref.set(answer, merge=True)
+
+    def retrieve_answer(self, username):
+        question_ref = (self.firestore.collection('User').
+                        document(username))
+
+        user_answer = question_ref.get().get('answer')
+
+        return user_answer
+
+
+    def insert_image_label(self, username, label):
+
+        image_label_ref = (self.firestore.collection('User').
+                        document(username))
+
+        image_label_ref.set(label, merge=True)
+
+    def retrieve_image_label(self, username):
+        image_label_ref = (self.firestore.collection('User').
+                        document(username))
+
+        image_label = image_label_ref.get().get('image_label')
+
+        return image_label
+
     def retrieve_LLM_generate_question(self, username, question_name) -> dict:
         """
         Retrieve the multiple choice question and the answer
@@ -124,19 +160,33 @@ class Firebase:
         
         return user_info
         
-        
-    def insert_user_score(self, username: str):
+    def insert_user_score(self, username: str, score):
         """
         Insert the updated score of each user base on username
         :input: int
         """
-        pass
+        score_data = {'score': score}
+
+        user_info_ref = (self.firestore.collection('User').
+                         document(username).collection('user_info').
+                         document('detail'))
+
+        # 会覆盖
+        user_info_ref.set(score_data, merge=True)
+
     def retrieve_user_score(self, username: str):
         """
         Retrieve the specific user score
         :return: int
         """
-        pass
+        user_info_ref = (self.firestore.collection('User').
+                         document(username).collection('user_info').
+                         document('detail'))
+
+        user_score = user_info_ref.get().get('score')
+
+        return user_score
+
     def insert_ranklist(self):
         """
         Insert each rank with username and correspond score in an up to down sequence
@@ -144,6 +194,8 @@ class Firebase:
             1 -> {'username': 'bla bla', ''score': 100}
             2 -> {'username': 'bla blaaa', ''score': 90} ...
         """
+        pass
+
 
 
 if __name__ == "__main__":
@@ -170,4 +222,33 @@ if __name__ == "__main__":
     username = 'jackson'
     user_info = data_processor.retrieve_user_info(username)
     print(user_info)
-    # Output: 
+    # Output: {'password': 'jacksonssss'}
+
+    # def insert_user_score(self, username: str):
+    username = 'jackson'
+    score = 7
+    data_processor.insert_user_score(username, score)
+
+    # def retrieve_user_score(self, username: str):
+    username = 'jackson'
+    score = data_processor.retrieve_user_score(username)
+    print(score)
+
+    # def insert_answer(self, username, answer):
+    username = 'test_user'
+    data = {'answer': 'B'}
+    data_processor.insert_answer(username, data)
+
+    # def retrieve_answer(self, username):
+    username = 'jackson'
+    answer = data_processor.retrieve_answer(username)
+    print(answer)
+
+    # def insert_image_label(self, username, label):
+    username = 'test_user'
+    label = {'image_label': 'keyboard'}
+    data_processor.insert_image_label(username, label)
+
+    username = 'test_user'
+    res = data_processor.retrieve_image_label(username)
+    print(res)

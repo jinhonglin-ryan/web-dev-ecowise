@@ -91,14 +91,14 @@
 
 .background-image {
   position: fixed;
-  top: 8vh; 
-  left: 10%; 
-  width: 80%; 
-  height: 80vh; 
+  top: 0vh; 
+  left: 0%; 
+  width: 100%; 
+  height: 100vh; 
   background: url('https://upload.wikimedia.org/wikipedia/commons/4/45/Georgetown_university_campus_map.PNG') no-repeat center center;
   background-size: cover; 
   z-index: -1;
-  opacity: 0.6;
+  opacity: 0.4;
   border-radius: 8px;
 }
 
@@ -121,4 +121,33 @@
   min-height: 100vh;
   padding: 20px;
   background: #f0f0f0; 
+}
+
+.main-page {
+  padding: 20px;
+}
+
+.text-response {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+button.selected {
+  border-color: blue;
+  font-weight: bold;
 }

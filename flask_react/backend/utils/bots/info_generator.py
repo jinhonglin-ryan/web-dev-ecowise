@@ -26,8 +26,7 @@ def make_request(keyword):
 
         response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages, max_tokens=700, top_p=0.1,
                                                 frequency_penalty=0, presence_penalty=0, stop=None, timeout=20)
-        result = response['choices'][0]['message']['content']
-
+        result = [response['choices'][0]['message']['content'], keyword]
         # Save result for each response
         # print(result)
         return result

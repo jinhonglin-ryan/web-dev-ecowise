@@ -42,13 +42,13 @@ const SignupComponent = () => {
                     onChange={(e) => setCollegeName(e.target.value)}
                 >
                     <option value="">Select College</option> 
-                    <option value="A">College of Arts & Sciences</option>
-                    <option value="B">Georgetown Law</option>
-                    <option value="C">McCourt School of Public Policy</option>
-                    <option value="D">McDonough School of Business</option>
-                    <option value="D">School of Medicine</option>
-                    <option value="D">School of Nursing</option>
-                    <option value="D">School of Health</option>
+                    <option value="College of Arts & Sciences">College of Arts & Sciences</option>
+                    <option value="Georgetown Law">Georgetown Law</option>
+                    <option value="McCourt School of Public Policy">McCourt School of Public Policy</option>
+                    <option value="McDonough School of Business">McDonough School of Business</option>
+                    <option value="School of Medicine">School of Medicine</option>
+                    <option value="School of Nursing">School of Nursing</option>
+                    <option value="School of Health">School of Health</option>
                 </select>
                 <button className="form-button" type="submit">Signup</button>
                 <p>

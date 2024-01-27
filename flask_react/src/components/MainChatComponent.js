@@ -8,9 +8,20 @@ function MainChatComponent() {
   const [mode, setMode] = useState('');
   const [textResponse, setTextResponse] = useState('');
 
+  const handleChoiceSelected = (choice) => {
+    axios.post('/api/game/submit-choice', { choice })
+      .then(response => {
+        // Handle the response
+        setTextResponse(response.data.response);
+      })
+      .catch(error => {
+        console.error("Error submitting choice", error);
+      });
+  };
+
   const handleModeChange = (newMode) => {
     setMode(newMode);
-    // Send mode change to the API if needed
+    // Send mode change to the API
     axios.post('/api/mode', { mode: newMode });
   };
 
@@ -22,10 +33,8 @@ function MainChatComponent() {
     // Submit the selected answer to your API for validation
     axios.post('/api/game/validate-answer', { answer })
       .then(response => {
-        // Handle the response (e.g., display if the answer is correct or not)
       })
       .catch(error => {
-        // Handle any errors
       });
   };
 
@@ -34,7 +43,7 @@ function MainChatComponent() {
       <ImageUploadComponent onModeChange={handleModeChange} setTextResponse={setTextResponse} />
       {textResponse && <div>{textResponse}</div>}
 
-      {mode === 'game' && <GameComponent onAnswerSelected={handleAnswerSelected} />}
+      {mode === 'game' && <GameComponent onChoiceSelected={handleChoiceSelected} />}
       {mode === 'chat' && <ChatComponent />}
     </div>
   );
