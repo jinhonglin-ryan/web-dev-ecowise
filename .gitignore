@@ -1,4 +1,7 @@
 .idea/
+.DS_Store
+backend/env
+flask_react/backend/__pycache__
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
