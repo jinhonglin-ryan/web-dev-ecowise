@@ -151,3 +151,19 @@ button.selected {
   border-color: blue;
   font-weight: bold;
 }
+
+.custom-nav .nav-link {
+  color: #030303;
+  margin-bottom: 2rem;
+}
+
+.custom-nav {
+  position: absolute;
+  height: 90%;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  border-right: 4px solid #000;
+}
+

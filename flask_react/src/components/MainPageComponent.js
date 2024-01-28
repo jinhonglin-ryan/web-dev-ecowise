@@ -3,6 +3,7 @@ import ImageUploadComponent from './ImageUploadComponent';
 import GameComponent from './GameComponent';
 import ChatComponent from './ChatComponent';
 
+
 const MainPageComponent = () => {
   const [mode, setMode] = useState('');
   const [textResponse, setTextResponse] = useState('');

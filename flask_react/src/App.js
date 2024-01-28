@@ -4,6 +4,8 @@ import LoginComponent from './components/LoginComponent';
 import SignupComponent from './components/SignupComponent';
 import './App.css';
 import MainPageComponent from './components/MainPageComponent';
+import MapComponent from './components/MapComponent';
+import GamePageHTML from "./components/GamePageHTML";
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
           </>
         } />
         <Route path="/main" element={<MainPageComponent />} />
+        <Route path="/map" element={<MapComponent />} />
+        <Route path="/game" element={<GamePageHTML />} />
       </Routes>
     </Router>
   );

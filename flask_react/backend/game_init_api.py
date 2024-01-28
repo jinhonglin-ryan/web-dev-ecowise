@@ -6,7 +6,6 @@ from utils.bots.game_bot import game_bot_interaction
 
 api = Flask(__name__)
 CORS(api)
-
 game_init_api = Blueprint('game_init_api', __name__)
 
 @game_init_api.route('/game_init', methods=['POST'])

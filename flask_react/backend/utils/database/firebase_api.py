@@ -136,7 +136,8 @@ class Firebase:
         :input: {"username": "user input", "password": "user input", "collegeName": "user input"}
         """
         username = input_json['username']
-        user_data = {"password": input_json['password'], "collegeName": input_json['collegeName']}
+        user_data = {"password": input_json['password'], "collegeName": input_json['collegeName'],
+                     "score": "0"}
 
         user_info_ref = (self.firestore.collection('User').
                          document(username).collection('user_info').
@@ -213,9 +214,15 @@ class Firebase:
 
     def retrieve_college_score(self, username):
         college_name = self.retrieve_user_college(username)
-        college_score_ref = (self.firestore.collection('CollegeRank').
-                             document(college_name))
-        return college_score_ref.get().get('college_score')
+        college_score_ref = self.firestore.collection('CollegeRank').document(college_name)
+
+        doc = college_score_ref.get()
+
+        if doc.exists and 'college_score' in doc.to_dict():
+            return doc.get('college_score')
+        else:
+            college_score_ref.set({'college_score': '0'}, merge=True)
+            return '0'
 
     def retrieve_user_college(self, username):
 
