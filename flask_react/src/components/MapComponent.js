@@ -1,7 +1,8 @@
 import React from 'react';
-import Map from './Map'; // Your Map component
+import Map from './Map';
 import { useJsApiLoader } from '@react-google-maps/api';
 import { mapOptions } from './MapConfiguration';
+import './FullPageMapWithNav.css'; // Import your stylesheet
 
 function FullPageMapWithNav() {
   const { isLoaded } = useJsApiLoader({
@@ -9,34 +10,41 @@ function FullPageMapWithNav() {
     googleMapsApiKey: mapOptions.googleMapApiKey
   });
 
-  const mapContainerStyle = {
-    width: '100%', // 100% of the viewport width
-    height: '100%', // 100% of the viewport height
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    zIndex: 0 // Make sure it's behind the navbar
-  };
-
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-
-      <div className="MapComponent" style={mapContainerStyle}>
+    <div className="full-page-container">
+      <div className="map-container">
         <Map isLoaded={isLoaded}/>
       </div>
 
-      {/* Navigation bar */}
-      <nav className="nav flex-column custom-nav d-flex align-items-center justify-content-center" style={{ position: 'absolute', top: '50%', left: '8%', transform: 'translate(-50%, -50%)', zIndex: 2 }}>
-        <a className="nav-link active" aria-current="page" href="http://localhost:3000/main">Why Us</a>
-        <a className="nav-link active" aria-current="page" href="http://localhost:3000/main">Chat</a>
-        <a className="nav-link active" aria-current="page" href="http://localhost:3000/map">Game</a>
-        <a className="nav-link active" aria-current="page" href="#">Rank</a>
-        <a className="nav-link active" aria-current="page" href="#">Contact</a>
-      </nav>
+      <div className="info-box">
+        {/* Insert your recorded messages here */}
+        At the core of our mission at Georgetown University is an unwavering commitment to student-centered advocacy,
+          emphasizing the critical importance of energy conservation and environmental protection.
+          We firmly believe in the power of empowering our youth,
+          recognizing their pivotal role in forging a more sustainable and environmentally conscious future.
+      </div>
 
+      <nav className="nav flex-column custom-nav" style={{
+        position: 'absolute',
+        top: '50%',
+        left: '0',
+        transform: 'translateY(-50%)',
+        height: '100%', // Take full height to align items in the middle
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center', // This centers the links vertically
+        zIndex: 2
+      }}>
+        <a href="http://10.150.243.90:3000/whyus">Why Us</a>
+        <a href="http://localhost:3000/main">Chat</a>
+        <a href="http://10.150.243.90:3000/game">Game</a>
+        <a href="http://10.150.243.90:3000/rank">Rank</a>
+        <a href="#">Contact</a>
+      </nav>
     </div>
   );
 }
 
 export default FullPageMapWithNav;
+
 

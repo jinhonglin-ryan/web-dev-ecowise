@@ -1,0 +1,119 @@
+.full-page-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.custom-nav {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.custom-nav a {
+  color: #333; /* Dark text for readability */
+  text-decoration: none;
+  font-size: 3rem;
+  margin: 2rem 0;
+  display: block;
+}
+
+.custom-nav a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.info-box {
+  position: absolute;
+  top: 40px; /* Adjust as necessary */
+  right: 40px; /* Adjust as necessary */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for visibility */
+  color: whitesmoke; /* White text color */
+  padding: 15px;
+  border-radius: 8px;
+  z-index: 3; /* Above both the map and the navigation */
+  max-width: 600px; /* Set a maximum width for the box */
+  font-size: 1.7rem; /* Adjust font size as necessary */
+}
+
+.upload-container {
+  position: fixed; /* Use fixed instead of absolute for viewport centering */
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 90px;
+  border: 4px dashed #aaa;
+  border-radius: 15px;
+  text-align: center;
+  width: 300px; /* Adjust width as necessary */
+  height: 250px; /* Adjust width as necessary */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.upload-container:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-color: #888;
+}
+
+.upload-input {
+  width: 0.1px;
+  height: 0.3px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.upload-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  background-color: #fafafa;
+  display: block; /* Changed to block for better click area */
+  cursor: pointer;
+  padding: 15px;
+  margin: 0; /* Remove margin for alignment */
+  border-radius: 5px; /* Rounded corners for the label */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.upload-label:hover {
+  background-color: #f0f0f0; /* Light background color on hover */
+}
+
+.upload-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #5cb85c; /* Bootstrap primary button color */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+  background-color: #4cae4c; /* Darker green on hover */
+}
+
+
+

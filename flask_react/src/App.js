@@ -5,29 +5,36 @@ import SignupComponent from './components/SignupComponent';
 import './App.css';
 import MainPageComponent from './components/MainPageComponent';
 import MapComponent from './components/MapComponent';
-import GamePageHTML from "./components/GamePageHTML";
+import Game from "./components/Game";
+import RankComponent from "./components/RankComponent";
+
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={
-          <>
+          <div className="app-container">
             <div className="background-image"></div>
             <div className="georgetown-text">Georgetown</div>
             <LoginComponent />
-          </>
+          </div>
         } />
         <Route path="/signup" element={
-          <>
+          <div className="app-container">
             <div className="background-image"></div>
             <div className="georgetown-text">Georgetown</div>
             <SignupComponent />
-          </>
+          </div>
         } />
-        <Route path="/main" element={<MainPageComponent />} />
-        <Route path="/map" element={<MapComponent />} />
-        <Route path="/game" element={<GamePageHTML />} />
+        <Route path="/main" element={
+          <div className="app-container">
+            <MainPageComponent />
+          </div>
+        } />
+        <Route path="/whyus" element={<MapComponent />} />
+        <Route path="/game" element={<Game />} />
+        <Route path="/rank" element={<RankComponent />} />
       </Routes>
     </Router>
   );

@@ -11,8 +11,8 @@ const Map = (props) =>{
     const {isLoaded} = props;
     const [selectedMarker, setSelectedMarker] = useState("");
     const containerStyle = {
-        width: '90vw', // 400px
-        height: '90vh' //400 px
+        width: '100vw', // 400px
+        height: '100vh', //400 px
     };
       
     const center = {
@@ -97,10 +97,10 @@ const Map = (props) =>{
                                 options = {{
                                     icon: 
                                     marker.rank === 1 
-                                    ? {url: first, scaledSize: new window.google.maps.Size(72, 72)}:marker.rank=== 2
-                                    ? {url: second, scaledSize: new window.google.maps.Size(65, 65)}:marker.rank===3
-                                    ? {url: third, scaledSize: new window.google.maps.Size(60, 60)}:
-                                    {url:others,scaledSize: new window.google.maps.Size(60, 60)},
+                                    ? {url: first, scaledSize: new window.google.maps.Size(100, 100)}:marker.rank=== 2
+                                    ? {url: second, scaledSize: new window.google.maps.Size(90, 90)}:marker.rank===3
+                                    ? {url: third, scaledSize: new window.google.maps.Size(80, 80)}:
+                                    {url:others,scaledSize: new window.google.maps.Size(100, 100)},
                                 }}
                                 onClick={()=>{
                                     setSelectedMarker(marker);

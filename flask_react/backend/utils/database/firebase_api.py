@@ -188,7 +188,32 @@ class Firebase:
 
         return user_score
 
-    def insert_ranklist(self):
+    def retrieve_rankedlist(self):
+        colleges_ref = self.firestore.collection('CollegeRank')
+        colleges = colleges_ref.stream()
+
+        # Create a list to store tuples of (college_dict, numeric_score) for ordering
+        college_data = []
+
+        for college in colleges:
+            college_dict = college.to_dict()
+            college_dict['college_name'] = college.id  # Add college name to the dictionary
+
+            # Convert college_score to a numerical value
+            numeric_score = float(college_dict['college_score'])
+
+            # Append the tuple to the list
+            college_data.append((college_dict, numeric_score))
+
+        # Sort the list based on the numeric_score
+        sorted_colleges = sorted(college_data, key=lambda x: x[1], reverse=True)
+
+        # Extract the college dictionaries from the sorted list
+        sorted_college_dicts = [item[0] for item in sorted_colleges]
+
+        return sorted_college_dicts
+
+    def insert_rankedlist(self):
         """
         Insert each rank with username and correspond score in an up to down sequence
         :input:
@@ -288,3 +313,5 @@ if __name__ == "__main__":
     username = 'test_user'
     res = data_processor.retrieve_image_label(username)
     print(res)
+
+    data_processor.retrieve_rankedlist()

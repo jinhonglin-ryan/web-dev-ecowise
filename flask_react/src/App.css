@@ -161,7 +161,7 @@ button.selected {
   position: absolute;
   height: 90%;
   top: 50%;
-  left: 3%;
+  left: 4%;
   transform: translateY(-50%);
   font-size: 3rem;
   border-right: 4px solid #000;

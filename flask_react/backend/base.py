@@ -4,6 +4,7 @@ from login_api import login_api
 from image_api import image_api
 from game_init_api import game_init_api
 from game_check_api import game_check_api
+from rank_api import rank_api
 
 
 api = Flask(__name__)
@@ -13,6 +14,7 @@ api.register_blueprint(login_api)
 api.register_blueprint(image_api)
 api.register_blueprint(game_init_api)
 api.register_blueprint(game_check_api)
+api.register_blueprint(rank_api)
 
 @api.route('/')
 def my_profile():

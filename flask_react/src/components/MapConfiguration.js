@@ -1,57 +1,70 @@
 const GOOGLE_MAPS_API_KEY = 'AIzaSyBUk869a0HaVDhk72oKdcckzRV8N27IPiw';
 
-const MAP_THEME = [
+const MAP_THEME =
+[
     {
         "featureType": "all",
-        "elementType": "labels.text",
+        "elementType": "labels.text.fill",
         "stylers": [
             {
-                "visibility": "off"
+                "color": "#ffffff"
             }
         ]
     },
     {
         "featureType": "all",
-        "elementType": "labels.icon",
+        "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "visibility": "off"
+                "color": "#000000"
+            },
+            {
+                "lightness": 13
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#144b53"
+            },
+            {
+                "lightness": 14
+            },
+            {
+                "weight": 1.4
             }
         ]
     },
     {
         "featureType": "landscape",
-        "elementType": "geometry.fill",
+        "elementType": "all",
         "stylers": [
             {
-                "color": "#f1efe8"
+                "color": "#08304b"
             }
         ]
     },
     {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry.fill",
+        "featureType": "poi",
+        "elementType": "geometry",
         "stylers": [
             {
-                "visibility": "on"
+                "color": "#0c4152"
             },
             {
-                "gamma": "1.19"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "gamma": "0.00"
-            },
-            {
-                "weight": "2.07"
+                "lightness": 5
             }
         ]
     },
@@ -60,7 +73,7 @@ const MAP_THEME = [
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#b2ac83"
+                "color": "#000000"
             }
         ]
     },
@@ -69,20 +82,62 @@ const MAP_THEME = [
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "color": "#b2ac83"
+                "color": "#0b434f"
+            },
+            {
+                "lightness": 25
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#0b3d51"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#146474"
             }
         ]
     },
     {
         "featureType": "water",
-        "elementType": "geometry.fill",
+        "elementType": "all",
         "stylers": [
             {
-                "color": "#8ac0c4"
+                "color": "#021019"
             }
         ]
     }
-];
+]
 
 export const mapOptions = {
     googleMapApiKey: GOOGLE_MAPS_API_KEY,
