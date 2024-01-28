@@ -100,20 +100,91 @@
 
 .upload-btn {
   display: block;
-  margin: 20px auto;
+  position: absolute;
+  bottom: 130px; /* Adjust as needed */
+  left: 50%;
   padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
+  transform: translateX(-220%);
+  z-index: 3;
   background-color: #5cb85c; /* Bootstrap primary button color */
   color: white;
   border: none;
   border-radius: 10px;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
 }
 
 .upload-btn:hover {
   background-color: #4cae4c; /* Darker green on hover */
 }
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This will center the children */
+  padding-left: 200px; /* Adjust if your navbar width is different */
+  padding-right: 200px; /* Same as left padding for symmetry */
+}
+
+.h1-container {
+  width: 30%;
+  display: flex;
+  margin-left: 280px;
+  margin-top: 1rem;
+}
+
+.table {
+  width: 100%;
+  margin-left: 245px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+/* Add a container for the ranking section */
+.rankings-container {
+  display: flex;
+  justify-content: center; /* Center the table horizontally */
+  align-items: center; /* Center the table vertically */
+  height: 50vh; /* Full height to align with the nav bar */
+  padding-left: 70px; /* Adjust based on the width of your nav bar */
+}
+
+/* Full-width table */
+.table th,
+.table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table thead th {
+  background-color: black;
+  color: white;
+  border-bottom: 4px solid gray;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.table tbody td {
+  font-weight: 500;
+}
+
+/* Responsive table for smaller screens */
+@media (max-width: 768px) {
+  .rankings-container {
+    padding-left: 0;
+  }
+  .table {
+    width: 100%;
+  }
+}
+
 
 
 

@@ -47,8 +47,7 @@ function ImageUploadComponent({ onModeChange, setTextResponse }) {
         <div>
           <img src={imageURL} alt="Uploaded" style={{ maxWidth: '300px', maxHeight: '300px' }} />
           <div>
-            <a href="http://localhost:3000/game" className="btn btn-primary" onClick={() => onModeChange('game')}>Game</a>
-
+            <button onClick={() => onModeChange('game')}>Game</button>
             <button onClick={() => onModeChange('chat')}>Chat</button>
           </div>
         </div>

@@ -40,23 +40,19 @@ function ImageUploadComponent({ onModeChange, setTextResponse }) {
   };
 
   return (
-    <div>
-      <div className="upload-container">
+    <div className="upload-component">
+      <div>
+        <div className="upload-container">
         <input type="file" id="file" className="upload-input" onChange={selectFileHandler} />
         <label htmlFor="file" className="upload-label">Drag your file here or click to select</label>
-        <button onClick={uploadHandler} className="upload-btn">Upload</button>
-      </div>
-
-      {imageURL && (
-        <div>
-          <img src={imageURL} alt="Uploaded" style={{ maxWidth: '500px', maxHeight: '500px' }} />
-          <div>
-            <a href="http://localhost:3000/game" className="btn btn-primary" onClick={() => onModeChange('game')}>Game</a>
-
-            <button onClick={() => onModeChange('chat')}>Chat</button>
-          </div>
+        {imageURL && (
+        <div className="image-preview" style={{ position: 'absolute', top: -5, left: -5, right: -5, bottom: -5, zIndex: 10 }}>
+          <img src={imageURL} alt="Uploaded" style={{ width: '100%', height: '100%' }} />
         </div>
       )}
+      </div>
+      <button onClick={uploadHandler} className="upload-btn" style={{ justifyContent: 'center' }}>Upload</button>
+      </div>
 
 
 
@@ -73,11 +69,13 @@ function ImageUploadComponent({ onModeChange, setTextResponse }) {
         }}>
         <a href="http://10.150.243.90:3000/whyus">Why Us</a>
         <a href="http://localhost:3000/main">Chat</a>
-        <a href="http://10.150.243.90:3000/game">Game</a>
+        <a onClick={() => onModeChange('game')} href="http://10.150.243.90:3000/game">Game</a>
         <a href="http://10.150.243.90:3000/rank">Rank</a>
         <a href="#">Contact</a>
       </nav>
     </div>
+
+
   );
 }
 
