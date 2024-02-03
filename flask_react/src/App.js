@@ -16,14 +16,14 @@ const App = () => {
         <Route path="/" element={
           <div className="app-container">
             <div className="background-image"></div>
-            <div className="georgetown-text">Georgetown</div>
+            <div className="georgetown-text">EcoWise</div>
             <LoginComponent />
           </div>
         } />
         <Route path="/signup" element={
           <div className="app-container">
             <div className="background-image"></div>
-            <div className="georgetown-text">Georgetown</div>
+            <div className="georgetown-text">EcoWise</div>
             <SignupComponent />
           </div>
         } />

@@ -39,3 +39,9 @@ def check_ended(user_full_input):
     if user_full_input == 'exit':
         return 1
 
+if __name__ == "__main__":
+    while (True):
+        user_input = input()
+        print(chatbot_interaction(user_input))
+
+

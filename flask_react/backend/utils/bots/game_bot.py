@@ -47,11 +47,11 @@ def extract_question_and_answer(generated_content):
     question_line = next((line for line in lines if line.startswith("Question: ")), None)
     question = question_line[len("Question: "):] if question_line else ""
 
-    # Extract the answer choices
+    # Extract the answer choices and remove the prefixes
     answer_choice_lines = [line for line in lines if line.startswith(("A) ", "B) ", "C) ", "D) ", "E) "))]
-    answer_choices = [choice.strip() for choice in answer_choice_lines]
+    answer_choices = [choice[len("A) "):].strip() for choice in answer_choice_lines]
 
-    # Extract the correct answer
+    # Extract the correct answer and remove the prefix
     correct_answer_line = next((line for line in lines if line.startswith("Correct Answer: ")), None)
     correct_answer = correct_answer_line[len("Correct Answer: "):].strip()[0] if correct_answer_line else ""
 

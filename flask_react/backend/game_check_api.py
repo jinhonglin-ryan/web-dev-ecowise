@@ -14,10 +14,10 @@ def game_check():
     data = request.get_json()
 
     username = data['username']
-    choice = data['choice']
+    choice = data['answer']
 
     data_processor = Firebase()
-    user_answer = data_processor.retrieve_answer(username)['answer']
+    user_answer = data_processor.retrieve_answer(username)
 
     user_score = int(data_processor.retrieve_college_score(username)) + 3
     college_score = int(data_processor.retrieve_college_score(username)) + 3
@@ -25,10 +25,10 @@ def game_check():
     if choice == user_answer:
         data_processor.insert_user_score(username, user_score)
         data_processor.insert_college_score(username, college_score)
-        return jsonify({"message": "Answer correct"}), 201
+        return jsonify({"message": "Answer correct (User Score + 3; School Score + 3)"}), 201
     else:
         data_processor.insert_user_score(username, user_score)
-        return jsonify({"message": "Answer incorrect"}), 201
+        return jsonify({"message": f"Answer incorrect (User Score + 0; School Score + 0). Correct Answer is {user_answer}"}), 201
 
 
 if __name__ == '__main__':
